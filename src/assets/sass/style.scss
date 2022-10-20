@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    padding-top: 100px;
+    justify-content: center;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 100px);
+    margin: auto;
+
+    .headers{
+      font-weight: bold;
+    }
+
+    .drop-zone {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0px 3px 5px #aaa;
+      margin: 30px;
+      padding: 10px;
+      width: 500px;
+      height: calc(80vh - 100px);
+
+     
+      
+      .draggable-item {
+        display: flex;
+        justify-content: center;
+        background-color: lightblue;
+        box-shadow: 0px 2px 5px #aaa;
+        margin: 1%;
+        padding: 1%;
+        cursor: all-scroll;
+      }
+    }
+    .bucket-2{
+      &.danger{
+        background-color: red;
+      }
+    }
+    .bucket-3{
+      &.danger{
+        background-color: red;
+      }
+    }
+  }
+
+  
+  
