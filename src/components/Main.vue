@@ -82,7 +82,6 @@ export default {
       this.phError = false;
       
       Object.values(data).forEach((value)=> {
-        console.log(value)
         this.phError = value.country !== 'PH';          
       });
     }
