@@ -1,6 +1,12 @@
 <template>
-  <div class="container row">
-      <div class="left col-md">
+  <div class="row">
+    <div class="col-md-12 error" >
+      <span v-show="usError || phError">{{error_msg}} </span>
+    </div>
+  </div>
+
+  <div class="container row">   
+      <div class="left col-md">        
         <span class="headers">Cities</span>
         <draggable v-model="bucket_1" transition="200" class="drop-zone">
           <template v-slot:item="{ item }">
@@ -67,24 +73,34 @@ export default {
         city: 'Dumaguete'
       },
     ],
-      bucket_2: [],
-      bucket_3: [],
+    error_msg: '',
+    bucket_2: [],
+    bucket_3: [],
     };
   },
   watch: {
     bucket_2(data) {
       this.usError = false;
       Object.values(data).forEach((value)=> {
-        this.usError = value.country !== 'US';          
+        this.usError = value.country !== 'US';    
+        if(this.usError) 
+          this.throwError('United States', value.city)     
       });
     },
     bucket_3(data) {
       this.phError = false;
       
       Object.values(data).forEach((value)=> {
-        this.phError = value.country !== 'PH';          
+        this.phError = value.country !== 'PH';   
+        if(this.phError) 
+          this.throwError('Philippines', value.city)         
       });
     }
+  },
+  methods: {
+      throwError(country, city){
+          this.error_msg = city + " doesn't belong to the " + country; 
+      }
   }
 };
 </script>
